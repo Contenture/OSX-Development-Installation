@@ -6,9 +6,11 @@ A simple guide for installing a new Development Machine at RedactiePartners
 1. [System Preference](#system-preference)
 1. [Xcode](#xcode)
 1. [Homebrew](#homebrew)
+	- [Install](#install-homebrew)
     - [Usage](#usage)
     - [Cask](#cask)
 1. [iTerm](#iterm)
+	- [Colors and Font Settings](#colors-and-font-settings)
 1. [Sublime Text](#sublime-text)
 
 
@@ -201,7 +203,7 @@ Edit the `.zshrc` file to use the `agnoster` theme
 ZSH_THEME=agnoster
 ```
 
-# Sublime Text 3
+# Sublime Text
 
 With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore Vim) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
 
