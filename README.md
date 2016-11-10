@@ -1,4 +1,4 @@
-# OSX-Development-Installation
+# OSX Development Installation
 
 A simple guide for installing a new Development Machine at RedactiePartners
 
@@ -57,7 +57,9 @@ Install [Xcode](https://developer.apple.com/xcode/) from the App store or the Ap
 
 For installing Xcode command line tools run the command
 
-`xcode-select --install`
+```sh
+xcode-select --install
+```
 
 It'll prompt you to install the command line tools. Follow the instructions and now you have Xcode and Xcode command line tools both installed and running.
 
@@ -69,9 +71,9 @@ Package managers make it so much easier to install and update applications (for 
 
 ### Install
 
-An important dependency before Homebrew can work is the Command Line Tools for Xcode. These include compilers that will allow you to build things from source.
+An important dependency before Homebrew can work is the **Command Line Tools** for **Xcode**. These include compilers that will allow you to build things from source.
 
-We can install Hombrew! In the terminal paste the following line (without the $), hit Enter, and follow the steps on the screen:
+To find the latest installation instructions go [here](http://brew.sh/)
 
 ## Usage
 
