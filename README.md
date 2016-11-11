@@ -314,7 +314,7 @@ Composer is a tool for dependency management in PHP. It allows you to declare th
 
 To install Composer please follow the [instructions on their website](https://getcomposer.org/download/) since the installation script changes over time due to updates.
 
-Composer is now install in the directory you run the command in, so now we need to move the composer file to the `/usr/local/bin` folder on the system so it can be accessed system wide.
+Composer is now installed in the directory you ran the command in, so now we need to move the composer file to the `/usr/local/bin` folder on the system so it can be accessed system wide.
 
 ```shell
 sudo mv composer.phar /usr/local/bin/composer
