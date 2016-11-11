@@ -351,7 +351,7 @@ Global install the packages in a system folder `~/.node_modules`, Globally insta
 
 To install a local package  you can do the following:
 
-``shell
+```shell
 npm install gulp-cli
 ```
 
