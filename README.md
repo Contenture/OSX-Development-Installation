@@ -18,7 +18,7 @@ A simple guide for installing a new Development Machine at RedactiePartners
 1. [Git](#git)
 1. [Python](#python)
 	- [Install](#install-using-homebrew)
-1. [Node.js](#node-js)
+1. [Node.js](#nodejs)
 	- [Install](#install-using-nvm)
 	- [npm](#node-packages)
 
