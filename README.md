@@ -21,6 +21,8 @@ A simple guide for installing a new Development Machine at RedactiePartners
 1. [Node.js](#nodejs)
 	- [Install](#install-using-nvm)
 	- [npm](#node-packages)
+1. [Heroku](#heroku)
+	- [Install](#heroku-toolbelt)
 
 
 # Introduction
@@ -390,4 +392,20 @@ npm install gulp --save-dev
 
 This will make sure that will not be included in a production output file/folder
 
+# Heroku
 
+[Heroku](http://www.heroku.com/), if you're not already familiar with it, is a [Platform-as-a-Service](http://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) that makes it really easy to deploy your apps online. There are other similar solutions out there, but Heroku was among the first and is currently the most popular. Not only does it make a developer's life easier, but I find that having Heroku deployment in mind when building an app forces you to follow modern app development [best practices](http://www.12factor.net/).
+
+### Heroku Toolbelt
+
+Assuming that you have an account (sign up if you don't), let's install the Heroku Client for the command-line. Heroku offers a Mac OS X installer, the Heroku Toolbelt, that includes the client. But for these kind of tools, I prefer using Homebrew. It allows us to keep better track of what we have installed. Luckily for us, Homebrew includes a heroku-toolbelt formula:
+
+```shell
+brew install heroku-toolbelt
+```
+
+The formula might not have the latest version of the Heroku Client, which is updated pretty often. Let's update it now:
+
+```shell
+heroku update
+```
