@@ -451,7 +451,7 @@ When installing packages that are defined in a `package.json` you'd normally do 
 
 The second change is installing packages:
 
-``shell
+```shell
 npm install <package> --save -> yarn add <package>
 ```
 
