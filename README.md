@@ -160,18 +160,34 @@ Let's see if we can get the elegance, simplicity, and speed of Homebrew for the 
 
 Some [plugins](https://github.com/sindresorhus/quick-look-plugins) to enable different files to work with Mac Quicklook. Includes features like syntax highlighting, markdown rendering, preview of jsons, patch files, csv, zip files etc.
 
-```sh
+```shell
+brew cask install qlcolorcode
+brew cask install qlmarkdown
+brew cask install qlimagesize
+brew cask install quicklookase
+brew cask install qlvideo
 brew cask install quicklook-json
 brew cask install quicklook-csv
 brew cask install betterzipql
 brew cask install webpquicklook
 ```
 
+**What do they do**
+**qlcolorcode** - Shows Sytax Highlighting for files in Finder Quicklook
+**qlmarkdown** - Renders Markdown Files inside the Finder Quicklook
+**qlimagesize** - Shows the Image Size (Resolution + File Size) in the Finde Quicklook top bar
+**quicklookase** - Previews ASE Color Swatches in the Finder Quicklook
+**qlvideo** - Previews Video's + Thumbnails + Metadata in the Finder Quicklook
+**quicklook-json** - Previews JSON Files in the Finder Quicklook
+**quicklook-csv** - Previews CSV Files in the Finder Quicklook
+**betterzipql** - Shows the contents of zip files inside the Finder Quicklook
+**webpquicklook** - Previews WEBP Images in the Finder Quicklook
+
 ### Apps
 
 I'll now cover installation of the apps using cask.
 
-```sh
+```shell
 brew cask install google-chrome
 brew cask install flux
 brew cask install sublime-text
@@ -180,7 +196,7 @@ brew cask install vlc
 
 # iTerm
 
-Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm3]().
+Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm3](https://www.iterm2.com/version3.html).
 
 In **Finder**, drag and drop the **iTerm** Application file into the **Applications** folder.
 
@@ -190,8 +206,7 @@ Let's just quickly change some preferences.
 
 * Go to Profiles -> Default -> Terminal -> Check Silence Bell
 * Set the Color Sheme to `Solarized Dark`
-* Change the font to 15pt [Hack](http://sourcefoundry.org/hack/) Regular
-
+* Change the font to 13pt [Hack](http://sourcefoundry.org/hack/) Regular
 
 ## ZSH
 
@@ -222,7 +237,7 @@ sudo nano ~/.zshrc
 Edit the `.zshrc` file to use the `agnoster` theme
 
 ```sh
-ZSH_THEME=agnoster
+ZSH_THEME="agnoster"
 ```
 
 # Sublime Text
@@ -231,6 +246,12 @@ With the terminal, the text editor is a developer's most important tool. Everyon
 
 Go ahead and [download](http://www.sublimetext.com/) it. Open the **.dmg** file, drag-and-drop in the **Applications** folder, you know the drill now. Launch the application.
 
+or install it using:
+
+```shell
+brew cask install sublime-text
+```
+
 **Note:** At this point I'm going to create a shorcut on the OS X Dock for both for Sublime Text and iTerm. To do so, right-click on the running application and select **Options > Keep in Dock**.
 
 Let's create a shortcut so we can launch Sublime Text from the command-line:
@@ -238,6 +259,8 @@ Let's create a shortcut so we can launch Sublime Text from the command-line:
 ```sh
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 ```
+
+**Note:** If you installed Sublime Text using `brew cask` the alias to `subl` will have been made already. The above code would output a ***already exists*** message.
 
 Now you can open a file with `subl Controller.php` or start a new project in the current directory with `subl .`. Pretty cool. We'll configure Sublime more in the next few sections.
 
