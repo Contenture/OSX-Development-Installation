@@ -18,9 +18,14 @@ A simple guide for installing a new Development Machine at RedactiePartners
 1. [Git](#git)
 1. [Python](#python)
 	- [Install](#install-using-homebrew)
+1. [Composer](#composer)
+	- [Install](#install-composer)
 1. [Node.js](#nodejs)
 	- [Install](#install-using-nvm)
 	- [npm](#node-packages)
+	- [Yarn](#alternative)
+		- [Install](#install-yarn)
+		- [Usage](#using-yarn)
 1. [Heroku](#heroku)
 	- [Install](#heroku-toolbelt)
 
@@ -301,6 +306,26 @@ pip install --upgrade pip
 
 Executable scripts from Python packages you install will be put in `/usr/local/share/python`.
 
+# Composer
+
+Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
+
+### Install Composer
+
+To install Composer please follow the [instructions on their website](https://getcomposer.org/download/) since the installation script changes over time due to updates.
+
+Composer is now install in the directory you run the command in, so now we need to move the composer file to the `/usr/local/bin` folder on the system so it can be accessed system wide.
+
+```shell
+sudo mv composer.phar /usr/local/bin/composer
+```
+
+this will add the `composer.phar` file as `composer` to the flder, allowing you to run commands like:
+
+```shell
+composer install
+```
+
 # Node.js
 
 **Node.js** is an open-source, cross-platform JavaScript runtime environment for developing a diverse variety of tools and applications. Although Node.js is not a JavaScript framework, many of its basic modules are written in JavaScript. It is an flexible modern way at handling server-side programming.
@@ -383,7 +408,7 @@ npm install jquery --save
 
 The `--save` options makes sure the reference to that package is written to the `package.json` and also references the version you are using if specified. That way other developers will always use the same packages.
 
-There is also a way to specify packages that are used during **development* of the application. These packages are necessary to do development specific tasks.
+There is also a way to specify packages that are used during development of the application. These packages are necessary to do development specific tasks.
 For example Gulp. Gulp is only needed to produce production ready files and is not needed during the runtime of the application. So installing this packages as a development package is better. To do this simply run the following command:
 
 ```shell
@@ -391,6 +416,40 @@ npm install gulp --save-dev
 ```
 
 This will make sure that will not be included in a production output file/folder
+
+### Alternative
+
+Alternatively we could use Yarn.
+Yarn is a layer on top of NPM created by Facebook. Facebook claims that Yarn is faster then NPM and uses the exact same configuration and install methods as NPM, except that they allow for Parallel and better cached downloads so it operates faster.
+
+In this sense Yarn and NPM are interchangable and can be used at the same time.
+
+### Install Yarn
+
+To install Yarn we simply install it through NPM using:
+
+```shell
+npm install -g yarn
+```
+
+### Using Yarn
+
+Yarn changed the command palette a bit compared to NPM but they do exactly the same.
+So the two most important changes are:
+
+```shell
+npm install -> yarn
+```
+
+When installing packages that are defined in a `package.json` you'd normally do `npm install` but yarn makes this easier by just allowing you to type `yarn`. It will read the `package.json` and install it's dependencies
+
+The second change is installing packages:
+
+``shell
+npm install <package> --save -> yarn add <package>
+```
+
+Yarn will always do the --save command. It silently adds it to the command so that you don't forget to add packages to the `package.json`
 
 # Heroku
 
@@ -409,3 +468,10 @@ The formula might not have the latest version of the Heroku Client, which is upd
 ```shell
 heroku update
 ```
+
+# Transmit
+
+Transmit is a FTP Program specifically for OSX. RedactiePartners owns a license through it's apple ID and it can be downloaded from the OSX app store.
+
+The confifuration file can be downloaded from this repository: [Transmit Configuration](#)
+
