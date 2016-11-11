@@ -76,6 +76,12 @@ If this is a new computer, there are a couple tweaks you would like to make to t
 
 Install [Xcode](https://developer.apple.com/xcode/) from the App store or the Apple developer website.
 
+After installing Xcode we need to agree to it's license. Newer version of Xcode allow you to accept from the command line:
+
+```sh
+sudo xcodebuild -license accept
+```
+
 For installing Xcode command line tools run the command
 
 ```sh
