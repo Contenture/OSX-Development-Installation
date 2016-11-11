@@ -11,7 +11,16 @@ A simple guide for installing a new Development Machine at RedactiePartners
     - [Cask](#cask)
 1. [iTerm](#iterm)
 	- [Colors and Font Settings](#colors-and-font-settings)
+	- [ZSH](#zsh)
 1. [Sublime Text](#sublime-text)
+	- [Packages](#packages)
+	- [User Settings](#sublime-settings)
+1. [Git](#git)
+1. [Python](#python)
+	- [Install](#install-using-homebrew)
+1. [Node.js](#node-js)
+	- [Install](#install-using-nvm)
+	- [npm](#node-packages)
 
 
 # Introduction
@@ -74,7 +83,7 @@ Also install [XQuartz](http://xquartz.macosforge.org/landing/) for X11 server an
 
 Package managers make it so much easier to install and update applications (for Operating Systems) or libraries (for programming languages). The most popular one for OS X is Homebrew.
 
-### Install
+### Install Homebrew
 
 An important dependency before Homebrew can work is the **Command Line Tools** for **Xcode**. These include compilers that will allow you to build things from source.
 
@@ -221,5 +230,164 @@ Now you can open a file with `subl Controller.php` or start a new project in the
 
 ### Package Control
 
-
 The simplest method of installation is through the **Sublime Text console**. The console is accessed via **View > Show Console menu**. Once open, paste in the appropriate code from [Package Controle Website](https://packagecontrol.io/installation).
+
+### Using Package Controle
+
+To use package control in Sublime Text you simply open a Sublime Text windown and press `CMD + SHIFT + P` to open the action window. In the action window you can type `install package` and the option for **Package Controle: Install Package** appears.
+
+### Packages
+
+With **Package Control** installed we can install some awesome packages for Sublime Text that will enhace the workflow.
+
+* [SideBarEnhancements](https://packagecontrol.io/packages/SideBarEnhancements) - Enhances the options in the Sublime Text Sidebar
+* [editorConfig](https://packagecontrol.io/packages/EditorConfig) - Allows for configuration of the editor. It enforces for example the use of 4 spaced tabs etc
+* [ESLint](https://packagecontrol.io/packages/ESLint) - ESLint is a packages that checks your code for errors
+* [Skins](https://packagecontrol.io/packages/Skins) - A Theme/Skin Manager to quickly switch themes for sublime
+* [Material Theme](https://github.com/equinusocio/material-theme) - A Material Design Theme for Sublime Text
+
+### Sublime Settings
+
+After the installation of all packages you can use the following **user setting** for Sublime Text by opening the User Settings with `CMD + ,`.
+
+```
+{
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"overlay_scroll_bars": "enabled",
+	"theme": "Material-Theme-Darker.sublime-theme"
+}
+```
+
+# Git
+
+OSX and XCode can both provide a library for using `git` via the command line.
+At RedactiePartners we like to use the **Github for OSX** application which can be downloaded from the [Github website](https://desktop.github.com/).
+
+# Python
+
+OS X, like Linux, ships with [Python](http://python.org/) already installed. But you don't want to mess with the system Python (some system tools rely on it, etc.), so we'll install our own version(s).
+
+### Install using Homebrew
+
+The following command will install the latest python and any dependencies required (it can take a few minutes to build everything):
+
+```shell
+brew install python
+```
+
+When finished, you should get a summary in the terminal. Running `which python` should output `/usr/local/bin/python`.
+
+It also installed [Pip](https://pypi.python.org/pypi/pip) (and its dependency [Setuptools](https://pypi.python.org/pypi/setuptools)), which is the package manager for Python. Let's upgrade them both:
+
+```shell
+pip install --upgrade setuptools
+pip install --upgrade pip
+```
+
+Executable scripts from Python packages you install will be put in `/usr/local/share/python`.
+
+# Node.js
+
+**Node.js** is an open-source, cross-platform JavaScript runtime environment for developing a diverse variety of tools and applications. Although Node.js is not a JavaScript framework, many of its basic modules are written in JavaScript. It is an flexible modern way at handling server-side programming.
+
+### Install using  NVM
+
+We are using NVM (Node Version Manager) to allow for easy installation of the required node.js version. NVM has the ability to install multiple Node.js version and with some simple commands it can switch between versions.
+
+To install NVM simply follow the instructions found here: [NVM Installation](https://github.com/creationix/nvm#install-script).
+
+After the installation is done simply run the following command to install the latest node version:
+
+```shell
+nvm install node
+```
+
+To list the currently used Node simply do:
+
+```shell
+nvm ls
+```
+
+To tell the system to use the version you want you can do the following command (This example uses the latest version):
+
+```shell
+nvm use node
+```
+
+To list all the Node version you can isntall through NVM simply run the command:
+
+```shell
+nvm ls-remote
+```
+
+To make a installed version or the latest version the default node version type the following:
+
+```shell
+nvm alias default node
+```
+
+### Node Packages
+
+Node comes packaged with it's own package manager called **NPM** (***Node Package Manager***).
+NPM packages are always installed the in project directory where you call the command, they will be installed in a folder called `node_modules`
+
+There are **two ways** of installing packages: **Local** and **Global**.
+
+Local will install the packages/modules in the folder where the command is run.
+Global install the packages in a system folder `~/.node_modules`, Globally install packages can be used anywhere on the machine while Locally installed packages can only be used in the projecct/folder.
+
+To install a local package  you can do the following:
+
+``shell
+npm install gulp-cli
+```
+
+To install the same package globally you do:
+
+```shell
+npm install -g gulp-cli
+```
+
+### Normal Packages and Development Packages
+
+When installing packages **locally** for specific projects you can save a reference to your required packages in a `.json` file.
+Node uses the filename `package.json` to reference to the packages.
+
+When another developer clones or downloads the project as is it will come bundled with the `package.json` file.
+To install the referenced packages inside the `package.json` file you simply run:
+
+```shell
+npm install
+```
+
+To make sure your packages get written to the `package.json` you simply run the following command during install
+
+```shell
+npm install jquery --save
+```
+
+The `--save` options makes sure the reference to that package is written to the `package.json` and also references the version you are using if specified. That way other developers will always use the same packages.
+
+There is also a way to specify packages that are used during **development* of the application. These packages are necessary to do development specific tasks.
+For example Gulp. Gulp is only needed to produce production ready files and is not needed during the runtime of the application. So installing this packages as a development package is better. To do this simply run the following command:
+
+```shell
+npm install gulp --save-dev
+```
+
+This will make sure that will not be included in a production output file/folder
+
+
