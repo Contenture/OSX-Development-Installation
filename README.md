@@ -1,6 +1,6 @@
 # OSX Development Installation
 
-A simple guide for installing a new Development Machine at RedactiePartners
+A simple guide for installing a new Development Machine at Contenture
 
 1. [Introduction](#introduction)
 1. [System Preference](#system-preference)
@@ -12,9 +12,12 @@ A simple guide for installing a new Development Machine at RedactiePartners
 1. [iTerm](#iterm)
 	- [Colors and Font Settings](#colors-and-font-settings)
 	- [ZSH](#zsh)
-1. [Sublime Text](#sublime-text)
-	- [Packages](#packages)
-	- [User Settings](#sublime-settings)
+1. [Editors](#editors)
+	- [Visual Studio Code](#visual-studio-code)
+		- [Extensions](#extensions)
+	- [Sublime Text](#sublime-text)
+		- [Packages](#packages)
+		- [User Settings](#sublime-settings)
 1. [Git](#git)
 1. [Python](#python)
 	- [Install](#install-using-homebrew)
@@ -28,6 +31,9 @@ A simple guide for installing a new Development Machine at RedactiePartners
 		- [Usage](#using-yarn)
 1. [Heroku](#heroku)
 	- [Install](#heroku-toolbelt)
+1. [Transmit](#transmit)
+1. [Local Development Environment](#local-development-environment)
+	- [Valet](#valet)
 
 
 # Introduction
@@ -173,25 +179,35 @@ brew cask install webpquicklook
 ```
 
 **What do they do**
+
 **qlcolorcode** - Shows Sytax Highlighting for files in Finder Quicklook
+
 **qlmarkdown** - Renders Markdown Files inside the Finder Quicklook
+
 **qlimagesize** - Shows the Image Size (Resolution + File Size) in the Finde Quicklook top bar
+
 **quicklookase** - Previews ASE Color Swatches in the Finder Quicklook
+
 **qlvideo** - Previews Video's + Thumbnails + Metadata in the Finder Quicklook
+
 **quicklook-json** - Previews JSON Files in the Finder Quicklook
+
 **quicklook-csv** - Previews CSV Files in the Finder Quicklook
+
 **betterzipql** - Shows the contents of zip files inside the Finder Quicklook
+
 **webpquicklook** - Previews WEBP Images in the Finder Quicklook
 
 ### Apps
 
-I'll now cover installation of the apps using cask.
+Using cask we can also install some commonly used applications on the Mac
 
 ```shell
 brew cask install google-chrome
 brew cask install flux
 brew cask install sublime-text
 brew cask install vlc
+brew cask sequel-pro
 ```
 
 # iTerm
@@ -206,7 +222,7 @@ Let's just quickly change some preferences.
 
 * Go to Profiles -> Default -> Terminal -> Check Silence Bell
 * Set the Color Sheme to `Solarized Dark`
-* Change the font to 13pt [Hack](http://sourcefoundry.org/hack/) Regular
+* Change the font to 13pt [Fira Code](https://github.com/tonsky/FiraCode)
 
 ## ZSH
 
@@ -240,7 +256,72 @@ Edit the `.zshrc` file to use the `agnoster` theme
 ZSH_THEME="agnoster"
 ```
 
-# Sublime Text
+# Editors
+
+Choosing and using an editors is always a personal preference. Here you can find some commonly used tools and packages/extension to use with each editor to make collaboration easier.
+
+## Visual Studio Code
+
+With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore Vim) user, a lot of people are going to tell you that [Visual Studio Code](https://code.visualstudio.com/) is currently the best one out there.
+
+Go ahead and [download](https://code.visualstudio.com/) it. Open the **.dmg** file, drag-and-drop in the **Applications** folder, you know the drill now. Launch the application.
+
+or install it using:
+
+```shell
+brew cask install visual-studio-code
+```
+
+**Note:** At this point I'm going to create a shorcut on the OS X Dock for both for Visual Studio Code and iTerm. To do so, right-click on the running application and select **Options > Keep in Dock**.
+
+Go ahead and open up Visual Studio Code. After reading the first welcome message go ahead and press`CMD + SHIFT + P` to open the the Command Palette.
+In the Command Palette search for `Code`.
+If done correctly you will see the following option
+
+```Shell
+Shell command: Install 'code' command in PATH
+```
+
+This will add a alias to your Terminal path allowing you to open up the editor through the Terminal using the word `code`
+
+Now you can open a file with `code Controller.php` or start a new project in the current directory with `code .`. Pretty cool. We'll configure Visual Studio Code more in the next few sections.
+
+**Note:** Don't forget to install [Fira Code](https://github.com/tonsky/FiraCode) cause we are going to setup [Font Ligatures](https://medium.com/larsenwork-andreas-larsen/ligatures-coding-fonts-5375ab47ef8e)
+
+### Extensions
+
+The simplest method to install extensions is through the extensions panel on the left side of the editor. You can also press `CMD + SHIFT + X` to quickly open the panel.
+
+Here is a list of some useful extensions but feel free to install what you deem fit.
+
+* [editorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) - Allows for configuration of the editor. It enforces for example the use of 4 spaced tabs to maintain readability
+* [SASS](https://marketplace.visualstudio.com/items?itemName=robinbentley.sass-indented) - Adds snippets and syntax highlighting for SASS files
+* [PHP](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense) - Adds Intellisense autocomplete, snippets for PHP files
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Adds ESLint to Visual Studio Code for code linting
+
+### Visual Code Settings
+
+After the installation you can change some of the setting in Visual Studio Code by pressing `CMD + ,`
+
+You can use the following setting:
+
+```
+
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
+    "editor.lineHeight": 20,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+    "editor.formatOnPaste": true,
+    "eslint.packageManager": "yarn",
+    "workbench.startupEditor": "newUntitledFile",
+}
+```
+
+
+## Sublime Text
 
 With the terminal, the text editor is a developer's most important tool. Everyone has their preferences, but unless you're a hardcore Vim) user, a lot of people are going to tell you that [Sublime Text](http://www.sublimetext.com/) is currently the best one out there.
 
@@ -310,7 +391,7 @@ After the installation of all packages you can use the following **user setting*
 # Git
 
 OSX and XCode can both provide a library for using `git` via the command line.
-At RedactiePartners we like to use the **Github for OSX** application which can be downloaded from the [Github website](https://desktop.github.com/).
+At Contenture we like to use the **Github for OSX** application which can be downloaded from the [Github website](https://desktop.github.com/).
 
 # Python
 
@@ -500,7 +581,95 @@ heroku update
 
 # Transmit
 
-Transmit is a FTP Program specifically for OSX. RedactiePartners owns a license through it's apple ID and it can be downloaded from the OSX app store.
+Transmit is a FTP Program specifically for OSX. Contenture owns a license through it's apple ID and it can be downloaded from the OSX app store.
 
 The confifuration file can be downloaded from this repository: [Transmit Configuration](#)
 
+
+# Local Development Environment
+
+In this part we will setup a local development environment for General Development but also for Wordpress Development
+
+To find all the general manuals for Wordpress and Hosting for Wordpress you can visit the Company's Google Sites.
+
+### Valet
+
+Valet is a framework made by the same people that make the Laravel PHP Framework. Valet uses NGINX and DNSMasq to spin up a local web server that is also directly accessible to the browser.
+
+All 'Sites' created through Valet are appended with the `.test` top-level domain.
+
+#### Installation
+
+First we will need to upgrade homebrew by doing the following
+
+```Shell
+brew update
+```
+
+Then we need to upgrade the PHP version of OSX to PHP 7.2 (OSX High Sierra comes with PHP 5.6) so run the following command
+
+```Shell
+brew install php@7.2
+```
+
+To test if it was installed correctly you can restart your Terminal and type `php --version` You should see version 7.2 being outputted.
+
+Now we can finally start installing Valet. Valet is installed through [Composer](#composer), so make sure to install that first.
+
+Now we can run the following command
+
+```Shell
+composer global require laravel/valet
+```
+
+When Valet is downloaded restart your Terminal. Now we can finally actually install the needed modules by running
+
+```Shell
+valet install
+```
+
+Valet should be installed and running. Follow the next steps to complete the setup.
+
+#### Setting up a website
+
+As mentioned earlier, Valet defaults all web servers with the `.test` top-level domain. This is because of numerous security reasons. It is possible to change this to something else but most Major Browsers (Chrome, Firefox, IE/Edge and Safari) have made changes to the way they interpret domains. For example it is no longer possible to correctly test a `.dev` domain in Chrome without doing some major workaround. 
+
+So it is wise to keep Valet's default `.test` tld from the start.
+
+To actually set up a web server we need to tell Valet where to look, so go into Finder on your Mac and create a folder somewhere. We usually create a `Sites` folder in the users home directory.
+
+Now open up terminal and browser to that Sites folder
+
+```Shell
+cd ~/Sites
+```
+
+and run the following command
+
+```Shell
+valet park
+```
+
+This will tell Valet to always look inside this folder to generate a web server.
+You can have multiple parked folders.
+
+To remove a folder you do exactly the same but instead of `park` you will need to run
+
+```Shell
+Valet unpark
+```
+
+Thia is all you need to do. Creating a website is as simple as creating a folder inside the `Sites` folder.
+
+So if you were to create a folder called `mywebsite` you could immediately browse to the following url `http://mywebsite.test` and Valet would server the files inside that folder.
+
+#### Local Development with HTTPS
+
+Valet has a simple way to add certificates to your local server.
+Just run the following command
+
+```Shell
+valet secure mywebsite
+```
+
+Everything will restart and you can now visit `https://mywebsite.test`
